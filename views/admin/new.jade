@@ -1,0 +1,15 @@
+extends ../layout/layout
+
+block content
+  .wrap
+    form(action="/new" method="post")
+      .form-group
+        label
+          span title
+          input.input(type="text" name="title" value="")
+      .form-group
+        label
+          span name
+          input.input(type="text" name="name" value="")
+      .form-group
+        input.btn(type="submit" value="保存")

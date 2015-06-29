@@ -1,0 +1,79 @@
+@import 'variables'
+body
+  margin 0
+  padding header-height+10 0 0
+  font-family 'Microsoft Yahei'
+  font-size 14px
+  line-height 1.5
+.wrap
+  width 1000px
+  margin 0 auto
+// header
+.header
+  width 100%
+  height header-height
+  position fixed
+  background brand-primary
+  left 0
+  top 0
+.clearfix
+  clear both
+.nav
+  list-style none
+  margin 0
+  padding 0
+  &:after
+    content ''
+    clear both
+    display table
+.menu
+  float left
+  margin-right 10px
+  a
+    display block
+    font-size 16px
+    padding 13px 25px
+    color brand-white
+    text-decoration none
+    &:hover
+      background brand-white
+      color brand-primary
+.table
+  width 100%
+  border-collapse collapse
+  tr:nth-child(even)
+    background gray-lightest
+  th
+    background gray-lighter
+    border 1px solid gray-lighter
+  td
+    border 1px solid gray-light
+  th,td
+    padding 5px
+.form-group
+  margin-bottom 10px
+  label
+    line-height 28px
+    span
+      display inline-block
+      width 60px
+      color gray-dark
+  .input
+    height 28px
+    border 1px solid gray-light
+    border-radius 3px
+    padding 0 5px
+.filter
+  margin-bottom 10px
+.btn
+  text-decoration none
+  border none
+.btn-primary
+  background brand-primary
+  color gray-lightest
+  padding 5px 10px
+  border-radius 3px
+.btn-link
+  color brand-primary
+.btn+.btn
+  margin-left 10px
