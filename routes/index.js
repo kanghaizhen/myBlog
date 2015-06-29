@@ -4,20 +4,37 @@ var db  = require('../db/mongous.js');
 var ObjectID = require('../node_modules/mongous/bson/objectid.js').ObjectID;
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var reply = db.find({},getList),
-      list = [];
-  function getList(r){
+  db.find({},function (r){
     list = r.documents;
     res.render('page/index', {
       title: 'myBlog',
       list: list
     });
-  }
+  })
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('page/login', {
+    title: 'myBlog'
+  });
+});
+
+router.post('/login', function(req, res, next) {
+  var user = {
+    username: req.body.username,
+    password:req.body.password
+  }
+  db.findUser(user,function(r){
+    if(r.documents.length > 0){
+      res.redirect('/admin');
+    }else{
+      res.status(401).send('用户名或密码错误');
+    }
+  });
+});
 
 router.get('/admin', function(req, res, next) {
-  db.find({}, function getList(r){
+  db.find({}, function (r){
     var list = r.documents;
     res.render('admin/index', {
       title: 'myBlog',

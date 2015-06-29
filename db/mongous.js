@@ -20,6 +20,12 @@ var db = {
       if(callback)callback(r);
     });
   },
+  findUser : function(data,callback){
+    var data = data || {};
+    $("myblog.user").find(1,data,function(r){
+      if(callback)callback(r);
+    });
+  },
   remove:function(data){
     if(data){
       $("myblog.list").remove(data);

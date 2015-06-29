@@ -1,0 +1,35 @@
+extends ../layout/layout
+
+block content
+  .wrap
+    form(action="/login" method="post" id="form")
+      .form-group
+        label
+          span username
+          input.input(type="text" name="username" value="")
+      .form-group
+        label
+          span password
+          input.input(type="password" name="password" value="")
+      .form-group
+        .error-tips
+      .form-group
+        input.btn.btn-primary(type="button" value="登录" id="login")
+  script.
+    $(function(){
+      var form = $("#form"),
+          login = $("#login");
+      login.on("click",function(){
+        $.ajax({
+          type:   "POST",
+          url:"/login",
+          data: form.serialize(),
+          error: function(request) {
+            $(".error-tips").html(request.responseText);
+          },
+          success:function(data){
+            window.location.href = "/admin";
+          }
+        });
+      });
+    });
