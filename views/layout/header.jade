@@ -3,5 +3,11 @@
     ul.nav.nav-list
       li.menu
         a(href="/") 首页
-      li.menu
-        a(href="/login") 登录
+      -if(state)
+        li.menu
+          a(href="/admin") 后台
+        li.menu
+          a(href="/quit") 退出
+      -else
+        li.menu
+          a(href="/login") 登录

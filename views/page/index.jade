@@ -1,14 +1,16 @@
 extends ../layout/layout
 
 block content
-  .wrap
-    table.table
-      thead
-        tr
-          th title
-          th name
-      tbody
-        each item in list
+  .wrap.clearfix
+    include ../layout/aside
+    .main
+      table.table
+        thead
           tr
-            td= item.title
-            td= item.name
+            th title
+            th name
+        tbody
+          each item in list
+            tr
+              td= item.title
+              td= item.name

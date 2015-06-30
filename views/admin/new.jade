@@ -2,7 +2,7 @@ extends ../layout/layout
 
 block content
   .wrap
-    form(action="/new" method="post")
+    form(action="/admin/new" method="post")
       .form-group
         label
           span title
@@ -12,4 +12,4 @@ block content
           span name
           input.input(type="text" name="name" value="")
       .form-group
-        input.btn(type="submit" value="保存")
+        input.btn.btn-primary(type="submit" value="保存")
