@@ -4,13 +4,15 @@ block content
   .wrap.clearfix
     include ../layout/aside
     .main
-      table.table
-        thead
-          tr
-            th title
-            th name
-        tbody
-          each item in list
-            tr
-              td= item.title
-              td= item.name
+      ul.list.clearfix
+        each item in list
+          li.item
+            a.block(href="/page/#{item._id}")
+              h1.title= item.title
+              .summary= item.summary
+              span.author 作者：#{item.author}
+              span.time
+                - if (item.update)
+                  = item.update
+                - else
+                  = item.creat

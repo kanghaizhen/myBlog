@@ -5,21 +5,22 @@ block content
     form(action="/login" method="post" id="form")
       .form-group
         label
-          span username
+          span 用户名
           input.input(type="text" name="username" value="")
       .form-group
         label
-          span password
+          span 密码
           input.input(type="password" name="password" value="")
       .form-group
         .error-tips
       .form-group
-        input.btn.btn-primary(type="button" value="登录" id="login")
+        input.btn.btn-primary(type="submit" value="登录")
   script.
     $(function(){
-      var form = $("#form"),
-          login = $("#login");
-      login.on("click",function(){
+      var form = $("#form");
+      form.on("submit",function(e){
+        var e = e || event;
+        e.preventDefault();
         $.ajax({
           type:   "POST",
           url:"/login",

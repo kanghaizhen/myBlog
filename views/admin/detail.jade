@@ -2,14 +2,35 @@ extends ../layout/layout
 
 block content
   .wrap
-    form(action="/admin/edit/#{list._id}" method="post")
+    -if(list)
+      -var url = "/admin/edit/#{list._id}";
+      -var title = list.title;
+      -var author = list.author;
+      -var countent = list.countent;
+      -var summary = list.summary;
+    -else
+      -var url = "/admin/new";
+      -var title = author = coutent = summary = "";
+    form(action=url method="post")
       .form-group
         label
-          span title
-          input.input(type="text" name="title" value="#{list.title}")
+          span 标题
+          input.input(type="text" name="title" value="#{title}" placeholder="请输入标题")
       .form-group
         label
-          span name
-          input.input(type="text" name="name" value="#{list.name}")
+          span 作者
+          input.input(type="text" name="author" value="#{author}" placeholder="请输入作者名字")
+      .form-group
+        label
+          span 摘要
+          textarea.textarea(name="summary", cols="30", rows="10" placeholder="请输入作者名字")= summary
+      .form-group
+        label
+          span 详细内容
+          textarea(type="text" id="editor" name="countent" value="#{countent}" placeholder="详细内容")
       .form-group
         input.btn.btn-primary(type="submit" value="保存")
+  script(src="/ueditor/ueditor.config.js")
+  script(src="/ueditor/ueditor.all.min.js")
+  script.
+    var ue = UE.getEditor('editor',ue_type.full);

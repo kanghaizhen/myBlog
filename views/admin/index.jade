@@ -7,15 +7,17 @@ block content
     table.table
       thead
         tr
-          th title
-          th name
-          th time
-          th 操作
+          th(width="20%") 标题
+          th(width="140") 作者
+          th 摘要
+          th(width="140") 更新时间
+          th(width=140) 操作
       tbody
         each item in list
           tr
             td= item.title
-            td= item.name
+            td= item.author
+            td= item.summary
             td
               - if (item.update)
                 = item.update
@@ -32,5 +34,5 @@ block content
         $.post("/admin/delete/"+id,function(data){
             $this.closest("tr").remove();
           });
-      })
-    })
+      });
+    });

@@ -18,11 +18,16 @@ body
   top 0
 .clearfix
   clear both
+  &:after
+    content ''
+    display table
+    clear both
 .aside
   width side-width
   float left
 .main
-  margin-left side-width+10
+  margin-left side-width
+  padding 10px
 .nav
   list-style none
   margin 0
@@ -65,10 +70,16 @@ body
       color gray-dark
   .input
     height 28px
-    width 200px
+    width 400px
     border 1px solid gray-light
     border-radius 3px
     padding 0 5px
+  .textarea
+    width 400px
+    height 80px
+    border 1px solid gray-light
+    border-radius 3px
+    padding 5px
 .filter
   margin-bottom 10px
 .btn
@@ -85,3 +96,37 @@ body
   margin-left 10px
 .error-tips
   color brand-danger
+.list
+  list-style none
+  margin 0
+  padding 0
+  .item
+    float left
+    margin-right 10px
+    margin-bottom 10px
+    .block
+      display block
+      width 240px
+      text-decoration none
+      border 1px solid #ccc
+      border-radius 5px
+      padding 10px
+      color #333
+      &:hover
+        background gray-lightest
+      h1
+        margin 0
+        font-weight normal
+        font-size 16px
+        color gray-base
+      .summary
+        font-size 14px
+        height 42px
+        overflow hidden
+        color gray-darker
+      .author,
+      .time
+        display inline-block
+        width 50%
+        font-size 12px
+        color gray
