@@ -14,20 +14,6 @@ var MongoStore   = require('connect-mongo')(session);
 var config = require('./config/config.js');
 var app = express();
 
-app.use(session({
-  secret: config.session.secret,
-  name: config.session.name,
-  cookie: {
-    maxAge:config.session.maxTime
-  },
-  resave           : false,
-  saveUninitialized: true,
-  store: new MongoStore({   //创建新的mongodb数据库
-    host: config.db.host,    //数据库的地址，本机的话就是127.0.0.1，也可以是网络主机
-    port: config.db.port,          //数据库的端口号
-    db: config.db.sessionsDb        //数据库的名称。
-  })
-}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +26,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: config.session.secret,
+  name: config.session.name,
+  cookie: {
+    maxAge:config.session.maxTime
+  },
+  resave           : false,
+  saveUninitialized: true,
+  store: new MongoStore({   //创建新的mongodb数据库
+    host: config.db.host,    //数据库的地址，本机的话就是127.0.0.1，也可以是网络主机
+    port: config.db.port,          //数据库的端口号
+    db  : config.db.sessionsDb        //数据库的名称。
+  })
+}));
 
 app.use('/', routes);
 app.use('/admin', users);

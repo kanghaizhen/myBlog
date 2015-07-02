@@ -3,7 +3,7 @@ extends ../layout/layout
 block content
   .wrap
     -if(list)
-      -var url = "/admin/edit/#{list._id}";
+      -var url = "/admin/edit/"+list._id;
       -var title = list.title;
       -var author = list.author;
       -var countent = list.countent;

@@ -40,6 +40,7 @@ exports.detail = function (req, res) {
   }else{
     return res.render('admin/detail',{
       title:"new",
+      list:false,
       state:true
     });
   }
@@ -60,5 +61,5 @@ exports.edit = function(req, res){
   }else{
     db.save(data);
   }
-  return res.redirect('admin');
+  return res.redirect('/admin');
 };
