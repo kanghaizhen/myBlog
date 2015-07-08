@@ -22,9 +22,9 @@ block content
           input.input(type="text" name="author" value="#{author}" placeholder="请输入作者名字")
       .form-group
         label
-          span 摘要
-          textarea.textarea(name="summary", cols="30", rows="10" placeholder="请输入作者名字")= summary
-      .form-group
+          span 内容摘要
+          textarea.textarea(name="summary", cols="30", rows="10" placeholder="请输入内容摘要")= summary
+      .form-group+
         label
           span 详细内容
           textarea(type="text" id="editor" name="countent" value="#{countent}" placeholder="详细内容")
