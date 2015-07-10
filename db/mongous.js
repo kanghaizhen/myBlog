@@ -16,7 +16,7 @@ var db = {
   },
   find : function(data,callback){
     var data = data || {};
-    $(list).find(data,function(r){
+    $(list).find(data, {}, {sort: {update: -1}},function(r){
       if(callback)callback(r);
     });
   },

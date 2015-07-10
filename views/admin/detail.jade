@@ -37,7 +37,9 @@ block content
     var ue = UE.getEditor('editor',ue_type.full);
     ue.addListener( 'ready', function( editor ) {
       var val = $(".editor").val();
-      ue.setContent(val, false);
+      if(val && val !="undefined"){
+        ue.setContent(val, false);
+      }
     });
     $("form").on("submit",function(){
       var val = ue.getContent();
