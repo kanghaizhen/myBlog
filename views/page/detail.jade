@@ -2,14 +2,11 @@ extends ../layout/layout
 
 block content
   .wrap
-    form(action="/#{list._id}" method="post")
-      .form-group
-        label
-          span title
-          input.input(type="text" name="title" value="#{list.title}")
-      .form-group
-        label
-          span name
-          input.input(type="text" name="name" value="#{list.name}")
-      .form-group
-        input.btn(type="submit" value="保存")
+    h1.title= list.title
+    div
+      span.author 作者：#{list.author}
+      span.time
+        更新时间：#{list.update}
+    .summary-detail
+      内容简介：#{list.summary}
+    .edit!= list.countent

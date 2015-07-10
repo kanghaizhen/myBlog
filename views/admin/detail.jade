@@ -14,23 +14,32 @@ block content
     form(action=url method="post")
       .form-group
         label
-          span 标题
-          input.input(type="text" name="title" value="#{title}" placeholder="请输入标题")
+          span.label 标题
+          input.input(type="text" name="title" value="#{title}" placeholder="请输入标题" data-require="require")
       .form-group
         label
-          span 作者
-          input.input(type="text" name="author" value="#{author}" placeholder="请输入作者名字")
+          span.label 作者
+          input.input(type="text" name="author" value="#{author}" placeholder="请输入作者名字" data-require="require")
       .form-group
         label
-          span 内容摘要
-          textarea.textarea(name="summary", cols="30", rows="10" placeholder="请输入内容摘要")= summary
-      .form-group+
+          span.label 内容摘要
+          textarea.textarea(name="summary", cols="30", rows="10" placeholder="请输入内容摘要" data-require="require")= summary
+      .form-group
         label
-          span 详细内容
-          textarea(type="text" id="editor" name="countent" value="#{countent}" placeholder="详细内容")
+          span.label 详细内容
+          input(type="hidden" class="editor" name="countent" value="#{countent}")
+          div#editor
       .form-group
         input.btn.btn-primary(type="submit" value="保存")
   script(src="/ueditor/ueditor.config.js")
   script(src="/ueditor/ueditor.all.min.js")
   script.
     var ue = UE.getEditor('editor',ue_type.full);
+    ue.addListener( 'ready', function( editor ) {
+      var val = $(".editor").val();
+      ue.setContent(val, false);
+    });
+    $("form").on("submit",function(){
+      var val = ue.getContent();
+      $(".editor").val(val);
+    });

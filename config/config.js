@@ -3,7 +3,7 @@ var config = {
   db:{
     host:'localhost',
     port:27017,
-    sessionsDb:'session',
+    sessionsDb:'myblog',
     db:'myblog'
   },
   session:{
@@ -15,7 +15,7 @@ var config = {
     list:"myblog.list",
     user:"myblog.user",
     count:"myblog.count",
-    section:"session.sessions"
+    section:"myblog.sessions"
   }
 }
 module.exports = config;

@@ -52,13 +52,14 @@ exports.edit = function(req, res){
         author : req.body.author,
         summary: req.body.summary,
         countent: req.body.countent,
-        creat  : db.getTime()
+        update  : db.getTime()
       },
   id = req.params.id;
   if(id){
     var _id = ObjectID(id);
     db.update(_id,data);
   }else{
+    data.creat = db.getTime();
     db.save(data);
   }
   return res.redirect('/admin');
