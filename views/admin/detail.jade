@@ -8,9 +8,10 @@ block content
       -var author = list.author;
       -var countent = list.countent;
       -var summary = list.summary;
+      -var file = list.file;
     -else
       -var url = "/admin/new";
-      -var title = author = coutent = summary = "";
+      -var title = author = coutent = summary = file = "";
     form(action=url method="post")
       .form-group
         label
@@ -24,6 +25,11 @@ block content
         label
           span.label 内容摘要
           textarea.textarea(name="summary", cols="30", rows="10" placeholder="请输入内容摘要" data-require="require")= summary
+      .form-group
+        label
+          span.label 展示图片
+          input.fileUp(type="file")
+          input(type="hidden", name="file" value="#{file}")
       .form-group
         label
           span.label 详细内容

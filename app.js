@@ -38,7 +38,7 @@ app.use(session({
   store: new MongoStore({   //创建新的mongodb数据库
     host: config.db.host,    //数据库的地址，本机的话就是127.0.0.1，也可以是网络主机
     port: config.db.port,          //数据库的端口号
-    db  : config.db.sessionsDb        //数据库的名称。
+    db  : config.db.db        //数据库的名称。
   })
 }));
 

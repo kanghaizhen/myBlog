@@ -47,14 +47,9 @@ exports.detail = function (req, res) {
 };
 
 exports.edit = function(req, res){
-  var data = {
-        title  : req.body.title,
-        author : req.body.author,
-        summary: req.body.summary,
-        countent: req.body.countent,
-        update  : db.getTime()
-      },
+  var data = req.body,
   id = req.params.id;
+  data.update = db.getTime()
   if(id){
     var _id = ObjectID(id);
     db.update(_id,data);
