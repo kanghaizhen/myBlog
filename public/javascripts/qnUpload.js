@@ -1,6 +1,8 @@
 $(function(){
   var token = "";
-  var bucket = ""
+  var bucket = "";
+  var baseUrl = "http://7xk6ll.com1.z0.glb.clouddn.com/";
+  var upUrl = "http://up.qiniu.com";
   $.get("/admin/token",function(result){
     token = result.uptoken;
   });
@@ -13,28 +15,16 @@ $(function(){
     formData.append("file",file);
     $.ajax({
       type:'POST',
-      url:"http://up.qiniu.com",
+      url:upUrl,
       data:formData,
       contentType:false,
       processData:false,
       success:function(data){
         var key = data.key;
-        $this.next().val(key);
+        var url = baseUrl+key
+        $this.next().val(url);
         if(callback) window[callback](key);
       }
-    })
-  });
-  $("img").each(function(){
-    var $this = $(this),
-        key = $this.data("key"),
-        view = $this.data("view"),
-        data = {
-          "key":key,
-          "view":view
-        }
-    $.post("/admin/url",data,function(result){
-      var url = result.url;
-      $this.attr("src",url);
     })
   });
 });
